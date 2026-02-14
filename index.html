@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carta para mi amor 💖</title>
+    <style type="text/css">
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* 💌 Caja principal (más grande y horizontal) */
+#contenido {
+    background: white;
+    width: 80%;
+    max-width: 900px;
+    min-height: 380px;
+    padding: 40px 50px;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    animation: aparecer 1.5s ease;
+    position: relative;
+}
+
+/* 💖 Título */
+#contenido h1 {
+    color: #e63946;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+/* 💬 Texto */
+#contenido p {
+    color: #444;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* 💕 Firma */
+#contenido p:last-child {
+    font-weight: bold;
+    color: #ff5d8f;
+}
+
+/* ✨ Animación de entrada */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ❤️ Corazones flotantes */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: flotar 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    #contenido {
+        width: 90%;
+        padding: 30px;
+    }
+
+    #contenido h1 {
+        font-size: 26px;
+    }
+
+    #contenido p {
+        font-size: 16px;
+    }
+}
+    /* 🎵 Botón de música */
+    #btnMusica {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    font-size: 26px;
+    padding: 10px 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    transition: transform 0.3s;
+}
+
+#btnMusica:hover {
+    transform: scale(1.1);
+}
+.imagenes {
+    display: flex;
+    justify-content: center;  /* centradas */
+    align-items: center;
+    gap: 30px;               /* espacio entre imágenes */
+    margin-top: 30px;
+}
+
+.imagenes img {
+    width: 160px;           /* 👈 más pequeñas */
+    max-height: 180px;      /* 👈 no se pasan */
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    animation: aparecerImg 1.2s ease;
+}
+
+
+/* ✨ animación suave */
+@keyframes aparecerImg {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+
+    </style>
+    <script>
+        window.onload = function () {
+
+            alert("🚨 ALTOOO 🚨\nAntes de entrar contesta estas 5 preguntas para ver si sos tú 😡");
+
+            let p1 = prompt("¿Quién es mi personaje favorito de Attack on Titan?");
+            let p2 = prompt("¿Cuál es la fecha de nuestro aniversario? (xx/xx/xxxx)");
+            let p3 = prompt("¿Qué amo más de ti?");
+            let p4 = prompt("¿Dónde fue nuestra primera 'cita'?");
+            let p5 = prompt("¿Cuál fue la primera peli que vimos juntos?");
+
+            let respuestasIncorrectas =
+                p1.toLowerCase() !== "levi" ||
+                p2 !== "26/07/2024" ||
+                p3.toLowerCase() !== "todo" ||
+                p4.toLowerCase() !== "cayala" ||
+                p5.toLowerCase() !== "moana";
+
+            if (respuestasIncorrectas) {
+                alert("❌ Respuestas incorrectas 😤\nInténtalo otra vez amor...");
+                location.reload();
+            } else {
+                alert(" Acceso permitido \nFeliz Día del Cariño, mi amor 😍");
+                document.getElementById("contenido").style.display = "block";
+            }
+        };
+        function toggleMusica() {
+        const musica = document.getElementById("musica");
+        const boton = document.getElementById("btnMusica");
+
+        if (musica.paused) {
+            musica.play();
+            boton.textContent = "🎵";
+        } else {
+            musica.pause();
+            boton.textContent = "🔇";
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <audio id="musica" autoplay loop>
+    <source src="te-amo-y-mas.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="btnMusica" onclick="toggleMusica()">🎵</button>
+    <div id="contenido" style="display:none;">
+        <div class="heart" style="left:10%">❤️</div>
+        <div class="heart" style="left:25%; animation-delay:1s;">💗</div>
+        <div class="heart" style="left:40%; animation-delay:2s;">💖</div>
+        <div class="heart" style="left:55%; animation-delay:3s;">💘</div>
+        <div class="heart" style="left:70%; animation-delay:4s;">💕</div>
+        <div class="heart" style="left:85%; animation-delay:5s;">❤️</div>
+
+        <h1>Feliz dia del cariño amooooor😍💗😘💞🥰💕😍🧸</h1>
+
+        <p>
+            Te hize alguito pq ps por lo menos alguito este 14 ve
+        </p>
+
+        <p>
+            Pero ps feliz dia del cariño amor te mucho ve espero que pases un lindo dia hoy te voy a extrañar mucho hoy pero ps saber que te amo mucho demaiado te amooooooo mi esposita lindota guapota😍💗😘💞🥰💕😍🧸
+                <div class="imagenes">
+                <img src="naruto.jpg">
+                <img src= "gato.jpg">
+                </div>
+    </div>
+    
+    
+
+</body>
+</html>
+
 
